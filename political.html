@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Political Simulator</title>
+        
+        <meta name="author" content="Redwolf Programs">
+        <meta name="description" content="A controller for the Political Simulator KoTH">
+        <meta name="keywords" content="RedwolfPrograms,Redwolf Programs,Controller,Political,Political Simulator,KoTH">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="style/fonts.css"/>
+        <link rel="stylesheet" href="style/main.css"/>
+        
+        <script src="js/controller.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <section class="container">
+            <section class="moves">
+                <b><span class="red">&#x25ba;</span> Bot One: $<span id="money_one">100.00</span></b>
+                <p id="moves_one">&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa0;</p>
+                <b><span class="blue">&#x25ba;</span> Bot Two: $<span id="money_two">100.00</span></b>
+                <p id="moves_two">&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa0;</p>
+            </section>
+            <canvas id="display" width="620" height="410"></canvas>
+        </section>
+        <section class="buttons">
+            <button id="start">Start</button>
+            <button id="next">Next</button>
+            <button id="reset">Reset</button>
+            <button id="tps">4 t/s</button>
+        </section>
+        <section class="bots">
+            <section class="bot_one">
+                <b>Bot One:</b>
+                <textarea id="bot_one" rows="6"></textarea>
+            </section>
+            <section class="bot_two">
+                <b>Bot Two:</b>
+                <textarea id="bot_two" rows="6"></textarea>
+            </section>
+        </section>
+        <section id="dialog_container">
+            <section class="dialog_content">
+                <section class="dialog">
+                    <p id="dialog_text"></p>
+                    <button id="dialog_close">Close</button>
+                </section>
+            </section>
+        </section>
+    </body>
+</html>
