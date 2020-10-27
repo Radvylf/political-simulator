@@ -1,0 +1,140 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 6pt;
+    padding: 0;
+    border: 0;
+}
+
+body > section {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.bots > section {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.moves {
+    width: 182px;
+    padding: 10px;
+}
+
+.red {
+    color: hsl(0, 80%, 44%);
+}
+
+.blue {
+    color: hsl(240, 80%, 44%);
+}
+
+.moves p {
+    padding-left: 10px;
+    font-family: 'Roboto Mono', courier, monospace;
+    white-space: pre-wrap;
+    font-size: 8pt;
+    margin: 0;
+    margin-bottom: 6pt;
+    line-height: 1.35;
+}
+
+canvas {
+    padding-left: 10px;
+}
+
+b {
+    display: block;
+    font-size: 10pt;
+    margin-bottom: 6pt;
+    line-height: 1.25;
+}
+
+button {
+    min-width: 56pt;
+    font-family: inherit;
+    font-size: 10pt;
+    line-height: 1.25;
+    background-color: transparent;
+    padding: 6pt 10pt;
+    border: 1px solid #606060;
+    color: #404040;
+    border-radius: 0;
+    margin: 0 2pt;
+}
+
+button#tps {
+    margin-left: 48pt;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+button:focus, textarea:focus {
+    border-color: #5e9ed6;
+    outline: 1px solid #5e9ed6;
+}
+
+textarea {
+    width: 100%;
+    display: block;
+    font-family: 'Roboto Mono', courier, monospace;
+    margin-bottom: 6pt;
+    word-break: break-all;
+    border: 1px solid #606060;
+    color: #404040;
+    border-radius: 0;
+    margin: 0 2pt;
+}
+
+section#dialog_container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+    align-items: center;
+}
+
+section.dialog {
+    min-width: 240pt;
+    display: inline-block;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+section.dialog button {
+    border: none;
+    color: #606060;
+    float: right;
+}
+
+section.dialog button:hover {
+    background-color: transparent;
+    color: #404040;
+    outline: 1px solid #606060;
+}
+
+section.dialog button:focus {
+    background-color: transparent;
+    color: #404040;
+    outline: 1px solid #5e9ed6;
+}
+
+section.dialog p {
+    white-space: pre-wrap;
+    font-size: 8pt;
+    margin: 0;
+    margin-bottom: 6pt;
+    line-height: 1.35;
+}
+
+section.dialog p.code {
+    font-family: 'Roboto Mono', courier, monospace;
+}
