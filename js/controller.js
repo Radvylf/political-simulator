@@ -8,6 +8,61 @@ var States = {
     
 var state = States.NOT_RUNNING;
 
+var campaign = (from, to) => {
+    if (!Array.isArray(from) || !Array.isArray(to) || from.length != 2 || to.length != 2)
+        return ["invalid", "campaign", from.toString(), to.toString()];
+    
+    if (!Number.isInteger(from[0]) || !Number.isInteger(from[1]) || from[0] < 0 || from[0] > 16 || from[1] < 0 || from[1] > 16)
+        return ["invalid", "campaign", "[" + from.join(", ") + "]", "[" + to.join(", ") + "]"];
+    
+    if (!Number.isInteger(to[0]) || !Number.isInteger(to[1]) || to[0] < 0 || to[0] > 16 || to[1] < 0 || to[1] > 16)
+        return ["invalid", "campaign", "[" + from.join(", ") + "]", "[" + to.join(", ") + "]"];
+    
+    return ["campaign", from, to];
+};
+var poll = (from, to) => {
+    if (!Array.isArray(from) || !Array.isArray(to) || from.length != 2 || to.length != 2)
+        return ["invalid", "poll", from.toString(), to.toString()];
+    
+    if (!Number.isInteger(from[0]) || !Number.isInteger(from[1]) || from[0] < 0 || from[0] > 16 || from[1] < 0 || from[1] > 16)
+        return ["invalid", "poll", "[" + from.join(", ") + "]", "[" + to.join(", ") + "]"];
+    
+    if (!Number.isInteger(to[0]) || !Number.isInteger(to[1]) || to[0] < 0 || to[0] > 16 || to[1] < 0 || to[1] > 16)
+        return ["invalid", "poll", "[" + from.join(", ") + "]", "[" + to.join(", ") + "]"];
+    
+    return ["poll", from, to];
+};
+var bribe = (at) => {
+    if (!Array.isArray(at) || at.length != 2)
+        return ["invalid", "bribe", at.toString()];
+    
+    if (!Number.isInteger(at[0]) || !Number.isInteger(at[1]) || at[0] < 0 || at[0] >= 16 || at[1] < 0 || at[1] >= 16)
+        return ["invalid", "bribe", "[" + at.join(", ") + "]", "[" + at.join(", ") + "]"];
+    
+    return ["bribe", at];
+};
+var merge = (from, to) => {
+    if (!Array.isArray(from) || !Array.isArray(to) || from.length != 2 || to.length != 2)
+        return ["invalid", "merge", from.toString(), to.toString()];
+    
+    if (!Number.isInteger(from[0]) || !Number.isInteger(from[1]) || from[0] < 0 || from[0] >= 16 || from[1] < 0 || from[1] >= 16)
+        return ["invalid", "merge", "[" + from.join(", ") + "]", "[" + to.join(", ") + "]"];
+    
+    if (!Number.isInteger(to[0]) || !Number.isInteger(to[1]) || to[0] < 0 || to[0] >= 16 || to[1] < 0 || to[1] >= 16)
+        return ["invalid", "merge", "[" + from.join(", ") + "]", "[" + to.join(", ") + "]"];
+    
+    return ["merge", from, to];
+};
+var unmerge = (at) => {
+    if (!Array.isArray(at) || at.length != 2)
+        return ["invalid", "unmerge", at.toString()];
+    
+    if (!Number.isInteger(at[0]) || !Number.isInteger(at[1]) || at[0] < 0 || at[0] >= 16 || at[1] < 0 || at[1] >= 16)
+        return ["invalid", "unmerge", "[" + at.join(", ") + "]", "[" + at.join(", ") + "]"];
+    
+    return ["unmerge", at];
+};
+
 (function() {
     var people, regions, bribes, bots;
     
