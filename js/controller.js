@@ -93,6 +93,7 @@ var state = States.NOT_RUNNING;
 
         var poll_data = (poll, bot) => {
             var area = [];
+            var data = [];
 
             var min_x = Math.min(poll[0][0], poll[1][0]);
             var max_x = Math.max(poll[0][0], poll[1][0]);
@@ -100,13 +101,29 @@ var state = States.NOT_RUNNING;
             var max_y = Math.max(poll[0][1], poll[1][1]);
 
             for (let x = min_x; x < max_x; x++)
-                area.concat(people[x].slice(min_y, max_y));
+                area = area.concat(people[x].slice(min_y, max_y));
+            
+            for (let x = min_x; x < max_x; x++)
+                for (let y = min_y; y < max_y; y++)
+                    data.push({
+                        position: [x, y],
+                        region: regions.findIndex(r => r.some(o => (
+                            o[0] <= x &&
+                            x - o[0] < 4 &&
+                            o[1] <= y &&
+                            y - o[1] < 4
+                        ))),
+                        support: people[x][y]
+                    });
 
             return {
-                number_neutral: area.reduce((a, p) => a + (p == 0), 0),
-                number_you: area.reduce((a, p) => a + (p * Math.sign(bot - 0.5) > 0), 0),
-                number_opponent: area.reduce((a, p) => a + (p * Math.sign(bot - 0.5) < 0), 0),
-                absolute_average: area.reduce((a, p) => a + Math.abs(p), 0) / area.length
+                people: data,
+                amounts: {
+                    number_neutral: area.reduce((a, p) => a + (p == 0), 0),
+                    number_you: area.reduce((a, p) => a + (p * Math.sign(bot - 0.5) > 0), 0),
+                    number_opponent: area.reduce((a, p) => a + (p * Math.sign(bot - 0.5) < 0), 0),
+                    absolute_average: area.reduce((a, p) => a + Math.abs(p), 0) / area.length
+                }
             };
         };
         
@@ -119,7 +136,7 @@ var state = States.NOT_RUNNING;
                     b.storage
                 );
             } catch(e) {
-                console.warn("Bot " + b.name + ":\n  " + (e.stack || e.message).replace(/\n/g, "\n  "));
+                console.warn("Bot " + ["One", "Two"][i] + ":\n  " + (e.stack || e.message).replace(/\n/g, "\n  "));
 
                 b.move = ["invalid", "error"];
             }
@@ -198,7 +215,7 @@ var state = States.NOT_RUNNING;
                     if (x < 15 && y < 15)
                         a += amount(x + 1, y + 1);
                     
-                    after[x][y] += Math.min(Math.max(a, -0.5), 0.5);
+                    after[x][y] += a;
                 }
             }
         });
