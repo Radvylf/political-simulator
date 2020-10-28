@@ -277,7 +277,7 @@ var unmerge = (at) => {
             
         for (let x = 0; x < 16; x++)
             for (let y = 0; y < 16; y++)
-                people[x][y] += after[x][y];
+                people[x][y] += Math.sign(after[x][y]) * (Math.abs(after[x][y]) > 2 ? 0.2 : 0.1);
         
         bots.forEach((b, i) => {
             if (b.move[0] != "campaign")
