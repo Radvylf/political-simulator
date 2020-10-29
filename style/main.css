@@ -87,6 +87,8 @@ textarea {
     color: #404040;
     border-radius: 0;
     margin: 0 2pt;
+    font-size: 8pt;
+    line-height: 1.25;
 }
 
 section#dialog_container {
