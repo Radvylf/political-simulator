@@ -323,7 +323,7 @@ var unmerge = (at) => {
                 if (!next.some(n => regions[old].some(o => Math.abs(n[0] - o[0]) + Math.abs(n[1] - o[1]) == 4)) || next[0][0] == regions[old][0][0] && next[0][1] == regions[old][0][1])
                     return;
                 
-                var cost = 25 * (regions[old].length + next.length);
+                var cost = 25 * (regions[old].length + next.length) - 25;
                 
                 if (b.money >= cost) {
                     next.push(...regions[old]);
