@@ -226,7 +226,7 @@ var unmerge = (at) => {
         
         bots.forEach((b, i) => {
             if (b.move[0] == "bribe")
-                bribes[b.move[1][1] / 4 | 0][b.move[1][0] / 4 | 0] += 1;
+                bribes[b.move[1][0] / 4 | 0][b.move[1][1] / 4 | 0] += 1;
             else if (b.move[0] == "campaign" && b.money < Math.abs(b.move[1][0] - b.move[2][0]) * Math.abs(b.move[1][1] - b.move[2][1]))
                 b.move = ["none"];
         });
